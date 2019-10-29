@@ -14,16 +14,16 @@ int main() {
     package[0] = '0'; package[1] = 'a';
     retval = q_push(&head, package, 2, 0);
     _printf("retval = %u \r\n",retval);
-    package[0] = '0'; package[1] = 'b';
-    retval = q_push(&head, package, 2, 0);
-    _printf("retval = %u \r\n",retval);
     package[0] = '2'; package[1] = 'a';
     retval = q_push(&head, package, 2, 2);
     _printf("retval = %u \r\n",retval);
-    package[0] = '3'; package[1] = 'a';
-    retval = q_push(&head, package, 2, 3);
+    package[0] = '0'; package[1] = 'b';
+    retval = q_push(&head, package, 2, 0);
     _printf("retval = %u \r\n",retval);
     package[0] = '2'; package[1] = 'b';
+    retval = q_push(&head, package, 2, 2);
+    _printf("retval = %u \r\n",retval);
+    package[0] = '2'; package[1] = 'c';
     retval = q_push(&head, package, 2, 2);
     _printf("retval = %u \r\n",retval);
 
@@ -51,6 +51,20 @@ int main() {
 
     /* Print the priority queue list */
     print_list(head);
+
+    /* Free queue */
+    while(q_pull(&result,&head) == 0);
+
+    /* Sixt Example : shows that mantaining the same priority
+    a normal behavior of a FIFO is presented */
+    for (i = 0; i < 5; i ++){
+      package[0] = i;
+      retval = q_push(&head, package, 1, 7);
+      _printf("retval = %u \r\n",retval);
+    }
+    while(q_pull(&result,&head) == 0){
+        _printf("Prio = %i Val = %i\r\n",result->prio,result->data[0]);
+    }
 
     _printf("done. head=%p\n", head);
 

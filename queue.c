@@ -38,22 +38,26 @@ uint8_t q_push(node_t **head, uint8_t *data, uint8_t datalen, uint8_t prio) {
             *head = new_node;
         }else if((*head)->prio >= prio){   // head have a bigger or equal priority
             current = *head;
-          while ((current->next != NULL) && (current->prio >= prio)) {
-              prev = current;
-              current = current->next;
-          }
-          if(prev != NULL){
-              if(prev->prio == prio){
-                  new_node->next = prev->next;
-                  prev->next = new_node;
-              }else{
-                  new_node->next = current->next;
-                  current->next = new_node;
-              }
-          }else{
-              new_node->next = current->next;
-              current->next = new_node;
-          }
+            while ((current->next != NULL) && (current->prio > prio)) {
+                prev = current;
+                current = current->next;
+            }
+            if((prev == NULL) && (current->next == NULL)){
+                new_node->next = current->next;
+                current->next = new_node;
+            }else{
+                while ((current->next != NULL) && (current->prio == prio)) {
+                    prev = current;
+                    current = current->next;
+                }
+                if(current->next == NULL){
+                    new_node->next = current->next;
+                    current->next = new_node;
+                }else{
+                    new_node->next = prev->next;
+                    prev->next = new_node;
+                }
+            }
         }else{                            // new data have a bigger priority
             new_node->next = *head;
             *head = new_node;
