@@ -1,26 +1,41 @@
-# priority_queue_for_microcontrollers
+# Priority Queue for Microcontrollers
 
-This repository contains a simple implementation of a priority queue for microcontrollers, like Texas MSP430 and so on. 
-There is a simple main function that explains how everything work.
+### This repository contains a simple implementation of a priority queue for microcontrollers, like Texas MSP430, Arduino and so on. 
 
-Below there are the several functions developed:
+#### This Priority Queue was implemented in a wireless network for traffic management (QoS) and the node_t structure contains the necessary parameters for my application. However, this structure can be easily modified for something else.
 
+##### In *Examples* folder you can compile the software, and test it by yourself. For that you need to type:
+```
+mkdir build
+cmake ..
+make
+./queue
+```
+
+##### node_t structure:
+```
 typedef struct node {
     uint8_t prio;
     uint8_t datalen;
     uint8_t data[RFM69H_MAX_MESG_SIZE];
     struct node *next;
 } node_t;
+```
+##### functions:
 
- * uint8_t q_push(node_t **head, uint8_t *data, uint8_t datalen, uint8_t prio);
- * Input: node_t head pointer, uint8_t data pointer, data length and priority
- * Output: retval
- * Brief description:
- * This function add the following message to the head queue
- *  -On success returns 0
- *  -On error returns 1 : in case of being full or returns 2 : in case of malloc error
-
+```
 uint8_t q_push(node_t **head, uint8_t *data, uint8_t datalen, uint8_t prio);
+```
+Input: **node_t** head pointer, **uint8_t** data pointer, **uint8_t** data length and **uint8_t** priority
+Output: retval
+    Brief description:
+        This function add the following message to the head queue
+            - On success returns 0
+            - On error returns:
+                1. in case of being full
+                2. in case of malloc error
+
+
 
 
  * uint8_t q_pull(node_t **result, node_t **head);
