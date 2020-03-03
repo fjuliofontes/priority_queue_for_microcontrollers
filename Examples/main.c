@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include <stdint.h>
 #include <stdlib.h>
 
-#include "queue.h"
+#include "../src/queue.h"
 
 int main() {
     node_t *head = NULL;

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdint.h>
 #include <stdlib.h>
 
 #include "queue.h"
@@ -32,7 +33,7 @@ uint8_t q_push(node_t **head, uint8_t *data, uint8_t datalen, uint8_t prio) {
         for(i = 0; i < datalen; i++){ new_node->data[i] = data[i]; }
 
         // If is the first node, add it right the way
-        // Otherwise organize it accordently to the priority
+        // Otherwise organize it accordingly to the priority
         if(*head == NULL){                 // first time
             new_node->next = *head;
             *head = new_node;
