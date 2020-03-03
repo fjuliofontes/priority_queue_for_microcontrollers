@@ -26,14 +26,12 @@ typedef struct node {
 ```
 uint8_t q_push(node_t **head, uint8_t *data, uint8_t datalen, uint8_t prio);
 ```
-Input: **node_t** head pointer, **uint8_t** data pointer, **uint8_t** data length and **uint8_t** priority\
-Output: retval\
-    Brief description:\
-        This function add the following message to the head queue\
-            - On success returns 0
-            - On error returns:
-                1. in case of being full
-                2. in case of malloc error
+Brief description:\
+    This function add a newer message to the queue\
+        - On success returns 0\
+        - On error returns:\
+                1. in case of being full\
+                2. in case of malloc error\
 
 
 
