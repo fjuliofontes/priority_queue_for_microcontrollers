@@ -23,27 +23,27 @@ typedef struct node {
 ```
 ##### functions:
 
-**Add Messages:**
+###### **Add Messages:**
 ```
 uint8_t q_push(node_t **head, uint8_t *data, uint8_t datalen, uint8_t prio);
 ```
 
-**Remove Messages:**
+###### **Remove Messages:**
 ```
 uint8_t q_pull(node_t **result, node_t **head);
 ```
 
-**Print current list by priority:**
+###### **Print current list by priority:**
 ```
 void print_list(node_t *head);
 ```
 
-**Check if queue is empty:**
+###### **Check if queue is empty:**
 ```
 uint8_t isEmpty();
 ```
 
-**Check if queue is full:**
+###### **Check if queue is full:**
 ```
 uint8_t isFull();
 ```
