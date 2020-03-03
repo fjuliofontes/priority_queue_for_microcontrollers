@@ -21,7 +21,7 @@ typedef struct node {
     struct node *next;
 } node_t;
 ```
-##### functions:
+##### Functions:
 
 ###### **Add Messages:**
 ```
